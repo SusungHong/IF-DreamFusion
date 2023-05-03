@@ -1,39 +1,18 @@
-# IF-DreamFusion (Forked from [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion))
+# IF-DreamFusion
 
 This is a pytorch implementation of the text-to-3D model **Dreamfusion**, powered by [DeepFloyd-IF](https://github.com/deep-floyd/IF).
 
-This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion), and is compatibl
+This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion), and the only difference is the integration of DeepFloyd-IF.
 
-# Stable-Dreamfusion
+# IF-DreamFusion vs Stable-DreamFusion (w/o DMTet finetuning)
 
-A pytorch implementation of the text-to-3D model **Dreamfusion**, powered by the [Stable Diffusion](https://github.com/CompVis/stable-diffusion) text-to-2D model.
 
-**NEWS (2023.4.17)**: Experimental Image-to-3D generation support!
-
-https://user-images.githubusercontent.com/25863658/232403294-b77409bf-ddc7-4bb8-af32-ee0cc123825a.mp4
-
-https://user-images.githubusercontent.com/25863658/232403162-51b69000-a242-4b8c-9cd9-4242b09863fa.mp4
-
-### [Update Logs](assets/update_logs.md)
-
-### Colab notebooks:
-* Instant-NGP backbone (`-O`): [![Instant-NGP Backbone](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MXT3yfOFvO0ooKEfiUUvTKwUkrrlCHpF?usp=sharing)
-
-* Vanilla NeRF backbone (`-O2`): [![Vanilla Backbone](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mvfxG-S_n_gZafWoattku7rLJ2kPoImL?usp=sharing)
-
-# Important Notice
-This project is a **work-in-progress**, and contains lots of differences from the paper. **The current generation quality cannot match the results from the original paper, and many prompts still fail badly!**
-
-## Notable differences from the paper
-* Since the Imagen model is not publicly available, we use [Stable Diffusion](https://github.com/CompVis/stable-diffusion) to replace it (implementation from [diffusers](https://github.com/huggingface/diffusers)). Different from Imagen, Stable-Diffusion is a latent diffusion model, which diffuses in a latent space instead of the original image space. Therefore, we need the loss to propagate back from the VAE's encoder part too, which introduces extra time cost in training.
-* We use the [multi-resolution grid encoder](https://github.com/NVlabs/instant-ngp/) to implement the NeRF backbone (implementation from [torch-ngp](https://github.com/ashawkey/torch-ngp)), which enables much faster rendering (~10FPS at 800x800).
-* We use the [Adan](https://github.com/sail-sg/Adan) optimizer as default.
 
 # Install
 
 ```bash
-git clone https://github.com/ashawkey/stable-dreamfusion.git
-cd stable-dreamfusion
+git clone https://github.com/SusungHong/IF-DreamFusion.git
+cd IF-DreamFusion
 ```
 
 To use image-conditioned 3D generation, you need to download some pretrained checkpoints manually:
@@ -87,7 +66,7 @@ pip install -i https://pypi.taichi.graphics/simple/ taichi-nightly
 First time running will take some time to compile the CUDA extensions.
 
 ```bash
-#### stable-dreamfusion setting
+#### if-dreamfusion setting
 
 ### Instant-NGP NeRF Backbone
 # + faster rendering speed
@@ -99,8 +78,9 @@ First time running will take some time to compile the CUDA extensions.
 # `--cuda_ray` enables instant-ngp-like occupancy grid based acceleration.
 python main.py --text "a hamburger" --workspace trial -O
 
-# reduce stable-diffusion memory usage with `--vram_O` 
+# reduce if-diffusion memory usage with `--vram_O` 
 # enable various vram savings (https://huggingface.co/docs/diffusers/optimization/fp16).
+# note that the vram settings are disabled in IF-DreamFusion
 python main.py --text "a hamburger" --workspace trial -O --vram_O
 # this makes it possible to train with larger rendering resolution, which leads to better quality (see https://github.com/ashawkey/stable-dreamfusion/pull/174)
 python main.py --text "a hamburger" --workspace trial -O --vram_O --w 300 --h 300 # Tested to run fine on 8GB VRAM (Nvidia 3070 Ti).
@@ -108,11 +88,14 @@ python main.py --text "a hamburger" --workspace trial -O --vram_O --w 300 --h 30
 # use CUDA-free Taichi backend with `--backbone grid_taichi`
 python3 main.py --text "a hamburger" --workspace trial -O --backbone grid_taichi
 
-# choose stable-diffusion version (support 1.5, 2.0 and 2.1, default is 2.1 now)
-python main.py --text "a hamburger" --workspace trial -O --sd_version 1.5
+# choose if-diffusion version (support 1.0, default is 1.0 now)
+python main.py --text "a hamburger" --workspace trial -O --if_version 1.0
 
 # we also support negative text prompt now:
 python main.py --text "a rose" --negative "red" --workspace trial -O
+
+# use original Stable Diffusion (default is DeepFloyd-IF)
+python main.py --text "a rose" --negative "red" --workspace trial -O --guidance stable-diffusion
 
 # A Gradio GUI is also possible (with less options):
 python gradio_app.py # open in web browser
@@ -256,15 +239,3 @@ This work is based on an increasing list of amazing research works and open-sour
     ```
 
 * The GUI is developed with [DearPyGui](https://github.com/hoffstadt/DearPyGui).
-
-# Citation
-
-If you find this work useful, a citation will be appreciated via:
-```
-@misc{stable-dreamfusion,
-    Author = {Jiaxiang Tang},
-    Year = {2022},
-    Note = {https://github.com/ashawkey/stable-dreamfusion},
-    Title = {Stable-dreamfusion: Text-to-3D with Stable-diffusion}
-}
-```

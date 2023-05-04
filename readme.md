@@ -4,6 +4,10 @@ This is an unofficial pytorch implementation of the text-to-3D model **Dreamfusi
 
 This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion), and the only difference is the integration of DeepFloyd-IF.
 
+# Results (IF-DreamFusion followed by DMTet finetuning)
+
+https://user-images.githubusercontent.com/5498512/236179585-eded1e6a-c7cc-42f4-891b-dfa2dd45bb42.mp4  https://user-images.githubusercontent.com/5498512/236180438-51392a23-51cb-454f-a619-99d67bda08fb.mp4
+
 # Install
 
 ```bash

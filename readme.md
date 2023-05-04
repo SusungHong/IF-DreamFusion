@@ -1,12 +1,8 @@
 # IF-DreamFusion
 
-This is a pytorch implementation of the text-to-3D model **Dreamfusion**, powered by [DeepFloyd-IF](https://github.com/deep-floyd/IF).
+This is an unofficial pytorch implementation of the text-to-3D model **Dreamfusion**, powered by [DeepFloyd-IF](https://github.com/deep-floyd/IF).
 
 This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion), and the only difference is the integration of DeepFloyd-IF.
-
-# IF-DreamFusion vs Stable-DreamFusion (w/o DMTet finetuning)
-
-
 
 # Install
 

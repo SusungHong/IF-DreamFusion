@@ -8,13 +8,13 @@ This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashaw
   <figure style="display:inline-block;margin-right:20px;">
     <img src="https://user-images.githubusercontent.com/5498512/236260854-e596e67e-d9d3-4355-8cb4-7f2d4f4e1eff.gif">
     <figcaption>
-      a zoomed out DSLR photo of a majestic giraffe with a long neck
+      a zoomed out DSLR photo of <br>a majestic giraffe with a long neck
     </figcaption>
   </figure>
   <figure style="display:inline-block;margin-right:20px;">
     <img src="https://user-images.githubusercontent.com/5498512/236260261-383d5339-c6e9-47ba-b15d-18020148a2df.gif">
     <figcaption>
-      a robot and dinosaur playing chess, high resolution
+      a robot and dinosaur playing chess, <br>high resolution
     </figcaption>
   </figure>
 </p>

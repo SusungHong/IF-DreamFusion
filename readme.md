@@ -11,8 +11,8 @@ This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashaw
 
 # vs Stable-DreamFusion
 
-| | *IF-DreamFusion* | Stable-DreamFusion |
-| ------------- | ------------- | ------------- |
+| | **IF-DreamFusion** | Stable-DreamFusion |
+| ------------------ | :------------------: | :------------------: |
 | Compositional Scene | V | |
 | Geometry | V | |
 | Resolution | | V |

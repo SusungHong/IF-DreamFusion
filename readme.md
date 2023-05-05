@@ -9,6 +9,14 @@ This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashaw
   <img src="https://user-images.githubusercontent.com/5498512/236260261-383d5339-c6e9-47ba-b15d-18020148a2df.gif">
 </p>
 
+# vs Stable-DreamFusion
+
+| | *IF-DreamFusion* | Stable-DreamFusion |
+| ------------- | ------------- | ------------- |
+| Compositional Scene | V | |
+| Geometry | V | |
+| Resolution | | V |
+
 # Install
 
 ```bash

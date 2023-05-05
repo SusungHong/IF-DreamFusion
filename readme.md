@@ -5,16 +5,18 @@ This is a pytorch implementation of the text-to-3D model **Dreamfusion**, powere
 This repository is a hard clone of [Stable-Dreamfusion](https://github.com/ashawkey/stable-dreamfusion), and the only difference is the integration of DeepFloyd-IF.
 
 <p float="left">
-<figure>
-  <img src="https://user-images.githubusercontent.com/5498512/236260854-e596e67e-d9d3-4355-8cb4-7f2d4f4e1eff.gif">
-  <figcaption>
-    a zoomed out DSLR photo of a majestic giraffe with a long neck
-  </figcaption>
-</figure>
-  <img src="https://user-images.githubusercontent.com/5498512/236260261-383d5339-c6e9-47ba-b15d-18020148a2df.gif">
-  <figcaption>
-    a robot and dinosaur playing chess, high resolution
-  </figcaption>
+  <figure style="display:inline-block;margin-right:20px;">
+    <img src="https://user-images.githubusercontent.com/5498512/236260854-e596e67e-d9d3-4355-8cb4-7f2d4f4e1eff.gif">
+    <figcaption>
+      a zoomed out DSLR photo of a majestic giraffe with a long neck
+    </figcaption>
+  </figure>
+  <figure style="display:inline-block;margin-right:20px;">
+    <img src="https://user-images.githubusercontent.com/5498512/236260261-383d5339-c6e9-47ba-b15d-18020148a2df.gif">
+    <figcaption>
+      a robot and dinosaur playing chess, high resolution
+    </figcaption>
+  </figure>
 </p>
 
 # Install

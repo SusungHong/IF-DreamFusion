@@ -412,7 +412,8 @@ class Trainer(object):
         if 'normal_image' in outputs:
             pred_normal = outputs['normal_image'].reshape(B, H, W, 3)
 
-        as_latent = False
+        if self.opt.guidance == 'deepfloyd-if':
+            as_latent = False
 
         if as_latent:
             # abuse normal & mask as latent code for faster geometry initialization (ref: fantasia3D)
